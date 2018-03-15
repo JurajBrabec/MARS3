@@ -1,0 +1,20 @@
+[Common Parameters]
+;comment
+TIME_ZONE       ="Europe/Bratislava"
+TIME_FORMAT     ="Y-m-d H:i:s"
+
+[MySQL conection details]
+;comment
+MYSQL_HOST      ="127.0.0.1"
+MYSQL_DB        ="mars30"
+
+[CSV]
+;comment
+DELIMITER       =,
+QUOTE           ='"'
+
+[Mailing]
+;comment
+SMTP_SERVER     ="localhost"
+SMTP_PORT       =25
+MAIL_FROM       ="MARS reports <mars-reports@hpe.com>"

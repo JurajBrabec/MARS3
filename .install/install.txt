@@ -1,0 +1,140 @@
+MARS 3.0 Installation guide
+
+Recommended installation order:
+	1.1	Web/DB server installation
+	2.1	Cell Servers installation
+	2.2	Cell Servers initial execution (not mandatory)
+	2.3	Cell Servers final configuration
+	1.2	Web/DB server final configuration
+
+Pre-requisites:
+
+Web/DB server must be a windows based platform (64 bits).
+MoM server is used in EMEA as Web/DB.
+HTTP port 80 must be free.
+MySQL port 3306 must be free.
+Free disk space required: 100MB for the Application and 1GB for the DB.
+Connectivity on MySQL ports open between cells and MoM (DB server)
+
+
+Steps:
+
+1) Web/DB Server - %MYSQL_HOST% (Windows)
+	Assuming the root folder (%MARS_HOME%) for the script will be C:\MARS
+	1.1) Installation:
+		Extract supplied archive MARS30.ZIP to %MARS_HOME%
+		Copy %MARS_HOME%\apache\conf\httpd.conf.default to %MARS_HOME%\apache\conf\httpd.conf
+		Edit %MARS_HOME%\apache\conf\httpd.conf
+			Replace %PATH% with %MARS_HOME%
+		Copy %MARS_HOME%\php\php.ini.default to %MARS_HOME%\php\php.ini
+		Edit %MARS_HOME%\php\php.ini
+			Replace %PATH% with %MARS_HOME%
+		Decide which database size you want to use - Small (default), Medium, Large - and enable relevant section in %MARS_HOME%\mysql\my.ini
+		Edit %MARS_HOME%\install\install.xml
+			Replace %PATH% with %MARS_HOME%
+		Run %MARS_HOME%\install\install.cmd
+			If there is no error, you should be able to open http://localhost/mars or http://%MYSQL_HOST%/mars in web browser
+		Edit %MARS_HOME%\www\mars\config.ini
+			modify TIME_ZONE (enter the local time zone) - use only valid PHP time zones from http://php.net/manual/en/timezones.php !!
+			modify SMTP server name (enter the local/current one)
+		Remove install folder (assuming no errors are encountered during the installation steps)
+	1.2) Final configuration:
+		Log in to MARS administration interface (http://localhost/mars or from anywhere http://%MYSQL_HOST%/mars)
+			Change Region and other settings
+			Add Cell Servers, Media Servers and Customers
+		Install any MARS patches/upgrades you may have available
+
+2) Cell Servers (Linux/HP-UX)
+	Assuming the root folder (%MARS_HOME%) for the script will be /opt/omni/lbin/Scripts/mars
+	2.1) Installation:
+		Create MARS root folder 
+			mkdir -p %MARS_HOME%
+		Copy&paste files from \MARS\scripts\cellserver from supplied archive MARS30.ZIP
+			install.php
+			install.sh
+		Modify install.sh and edit PHP_HOME path
+		Run chmod 755 %MARS_HOME%/install.sh
+		Run %MARS_HOME%/install.sh %MYSQL_HOST%
+		There should be no error message and all scripts should be retrieved from database.
+		Edit %MARS_HOME%/config.ini
+			Modify TIME_ZONE - use only valid PHP time zones from http://php.net/manual/en/timezones.php !!
+			Replace %MYSQL_HOST% with valid DB server
+			(optional) Uncomment and replace %CELLSERVER% with valid Cell Server name, or remove the line - Cell Server name will be retrieved via omnidbutil
+			(optional) Uncomment and replace %MAINT% with path to a file, which will be checked for existence and in such case no action will be done
+		Test the installation
+			%MARS_HOME%/mars.sh -t
+		There should be no error message and a couple of "OK" messages.
+	2.2) Initial execution (not mandatory):
+		Execute routines, if you want to have everything ASAP. Otherwise they will be executed within next 24 hours:
+			MOM/standalone:
+				%MARS_HOME%/mars.sh -r libraries
+				%MARS_HOME%/mars.sh -r devices
+				%MARS_HOME%/mars.sh -r media
+			All Cell Servers:
+				%MARS_HOME%/mars.sh -r specifications
+				%MARS_HOME%/mars.sh -r check_backups
+				%MARS_HOME%/mars.sh -r omnistat
+	2.3) Final configuration:
+		Add user "root" to to %OMNI_SERVER%/users/userlist: 
+			"root" "root" "root" %CELLSERVER% "admin"
+		Schedule MARS execution each 5 minutes	
+			crontab -e
+			# MARS 3.0
+			*/5 * * * * %MARS_HOME%/mars.sh -s >/dev/null 2>&1
+		Add MARS-related DP Notifications
+			Open \MARS\scripts\cellserver\Notifications from supplied archive MARS30.ZIP 
+			Replace %PATH% with %MARS_HOME%/mars.sh
+			Remove three lines starting with #
+			Save to file %OMNI_SERVER%/Notifications
+		Remove install.* files
+			rm -f %MARS_HOME%/install.*
+
+2) Cell Servers (Windows)
+	Assuming the root folder for the script will be F:\dpshare\MARS
+	2.1) Installation:
+		Create MARS root folder 
+			mkdir %MARS_HOME%
+		Copy&paste folder \MARS\php from supplied archive MARS30.ZIP
+		Edit %MARS_HOME%\php\php.ini and modify:
+			extension_dir="ext"
+		Copy&paste files from \MARS\scripts\cellserver from supplied archive MARS30.ZIP 
+			install.cmd
+			install.php
+			install.xml
+		Run %MARS_HOME%\install.cmd %MYSQL_HOST%
+		There should be no error message and a all scripts should be retrieved from database.
+		Edit %MARS_HOME%\config.ini
+			Disable UX paths/service list, enable WIN paths/service list
+			Modify TIME_ZONE - use only valid PHP time zones from http://php.net/manual/en/timezones.php !!
+			Replace %MYSQL_HOST% with valid DB server
+			(optional) Uncomment and replace %CELLSERVER% with valid Cell Server name, or remove the line - Cell Server name will be retrieved via omnidbutil
+			(optional) Uncomment and replace %MAINT% with path to a file, which will be checked for existence and in such case no action will be done
+		Test the installation
+			%MARS_HOME%\mars.cmd -t
+		There should be no error message and a couple of "OK" messages.
+	2.2) Initial execution (not mandatory):
+		Execute routines, if you want to have everything ASAP. Otherwise they will be executed within next 24 hours:
+			MOM/standalone:
+				%MARS_HOME%\mars.cmd -r libraries
+				%MARS_HOME%\mars.cmd -r devices
+				%MARS_HOME%\mars.cmd -r media
+			All Cell Servers:
+				%MARS_HOME%\mars.cmd -r specifications
+				%MARS_HOME%\mars.cmd -r check_backups
+				%MARS_HOME%\mars.cmd -r omnistat
+	2.3) Final configuration:
+		Edit %MARS_HOME%\install.xml
+			Replace %PATH% with %MARS_HOME%
+		Add user to %OMNI_SERVER%\users\userlist: 
+			Using SYSTEM account:	"Local System Account" "SYSTEM" "NT AUTHORITY" %CELLSERVER% "admin"
+			Using dedicated account:"DP Service Account" "%USER%" "%DOMAIN%" %CELLSERVER% "admin"
+		Schedule MARS execution each 5 minutes	
+			Using SYSTEM account:    SCHTASKS /Create /TN MARS RU:SYSTEM /XML install.xml /F
+			Using dedicated account: SCHTASKS /Create /TN MARS /RU:%DOMAIN%\%USER% /RP:%PASSWORD% /XML install.xml /F
+		Add MARS-related DP Notifications
+			Open \MARS\scripts\cellserver\Notifications from supplied archive MARS30.ZIP 
+			Replace %PATH% with %MARS_HOME%\mars.cmd
+			Remove three lines starting with #
+			Save to file %OMNI_SERVER%\Notifications
+		Remove install.* files
+			del /q %MARS_HOME%\install.*

@@ -1,0 +1,282 @@
+MARS 3.0 Release notes 
+======================
+
+21.2.2018 version 3.0 build #9.2
+•	Added "config_timers" table to measure duration of various tasks.
+•	Revamped "Processes" and "Status" reports, based on "config_timers".
+•	Fixed issue in "Clients" report, where number of specifications was 0 (zero).
+
+7.2.2018 version 3.0 build #9.1
+•	Fixed issue with obsolete (zero-protected-object) clients not disappearing from list.
+
+10.1.2018 version 3.0 build #9.0
+•	Added last "Routine", "Daily routine" and "Maintenance" dates and durations to "Database server overview" report.
+•	Removed "Slow queries" and "Aborted sessions" from "Database server overview" report.
+•	Fixed "Daily routine" issue with MariaDB version above 10.2.10.
+
+2.1.2018 version 3.0 build #8.11
+•	File system cleanup
+
+21.12.2017 version 3.0 build #8.10
+•	HeidiSQL 9.5
+
+11.12.2017 version 3.0 build #8.9
+•	'Event lost owner' issue fix.
+•	'Customer with long name' issue fix.
+
+6.12.2017 version 3.0 build #8.8
+•	Modified daily routine to allow correct handling of obsolete clients/mountpoints.
+
+8.11.2017 version 3.0 build #8.7
+•	Modified SCHEDULER.CMD to allow automated PHP upgrade.
+
+2.11.2017 version 3.0 build #8.6
+•	Modified maintenance routine to be much faster (CREATE/INSERT/RENAME rather than DELETE/OPTIMIZE).
+
+4.10.2017 version 3.0 build #8.5
+•	Increased maximum upload size to 80M.
+
+5.9.2017 version 3.0 build #8.4
+•	Upgrade OMNI2ESL export to latest OBCHECK format.
+
+2.6.2017 version 3.0 build #8.3
+•	Fixed TIME_ZONE related warning in scheduler.log.
+
+4.5.2017 version 3.0 build #8.2
+•	Fixed image embedding in Outlook messages.
+
+20.4.2017 version 3.0 build #8.1
+•	Rebranding to DXC Technology.
+
+27.1.2017 version 3.0 build #8.0
+•	Added optional STARTOFSESSION_SKIP parameter. If present, no StartOfSession notifications/actions will be processed (speeds up Cells with bakcklog).
+•	Modified EndOfSession processing, raised priority for sessions and lowered priority for objects/media/devices.
+•	Fix: 'In progress' sessions are not counted as failed anymore.
+•	Fix: Scheduled HTML/CSV reports at same time may have mixed up format.
+•	Fix: Scheduled CSV reports now accept any characters in report name.
+•	Minor updates to INIT script.
+•	Extended copyright to year 2017.
+•	Added release notes.txt file.
+•	3.0.8.0 release.
+
+19.12.2016 version 3.0 MariaDB/PHP upgrade
+•	Maria DB version 10.1.19.
+•	PHP version 5.6.29.
+
+15.12.2016 version 3.0 build #7.6
+•	Web: Added "SessionID" column to "Specifications/Status" report.
+•	Web: Modified parsing of formatting conditions.
+•	CellServer: Modified specification's and copylist's schedule parsing to allow EAO specific settings.
+
+5.12.2016 version 3.0 build #7.5
+•	Fixed bug introduced in DP9/DP8b212 while reading build/report output.
+
+1.12.2016 version 3.0 build #7.4
+•	Added 'Specification by status' report.
+
+28.11.2016 version 3.0 MariaDB upgrade
+•	Removed obsolete ODBC user without password
+•	Updated passwords to strong level https://myitsupport.ext.hpe.com/myITsupport/ITSArticle?ArticleNumber=000001663.
+
+24.11.2016 version 3.0 build #7.3
+•	Fixed scheduled media routine error on Windows MoM's.
+•	Added various database cleanups to daily routine.
+
+10.11.2016 version 3.0 build #7.2
+•	Fixed OMNISTAT issue when DB server time is ahead of Cell Server time.
+•	Fixed UX-specific "empty file" error when creating ITO record.
+
+7.11.2016 version 3.0 MariaDB upgrade
+•	Maria DB version 10.1.18.
+
+17.10.2016 version 3.0 build #7.1
+•	Hotfix for 3.0.7.0 release (OMNISTAT-DETAIL for finished sessions was not handled properly).
+
+14.10.2016 version 3.0 build #7.0
+•	Fixed OMNISTAT processing issues
+•	Added TMP file clean-up after graceful finish.
+
+5.9.2016 version 3.0 build #6.9
+•	Added mountpoint aggregation for Hana and Sybase Integrations.
+•	Added "FS Clients", "Integ Clients" and "Objects" fields to "Cell Servers" and "Customers" reports.
+
+11.8.2016 version 3.0 build #6.8
+•	Fixed OMNI2ESL/ITO_FILE path issue when pointing to other than MARS drive.
+
+9.8.2016 version 3.0 build #6.7
+•	Fixed hanging OMNISTAT process (implemented kill of >4minutes old omnistat processes on both Win/UX).
+
+9.8.2016 version 3.0 build #6.6
+•	Hotfix for 3.0.6.5 release
+
+8.8.2016 version 3.0 build #6.5
+•	Added indication of worker count to Cell Servers report (hostname::workers).
+•	Reprogrammed all possible DP external commands from cache_command() to workers system.
+
+2.8.2016 version 3.0 build #6.4
+•	Extended "performance" field in Session Objects/Devices.
+•	Modified error handling related to workers output in Session Objects/Devices/Media.
+•	Fixed "-every -*month -starting *" schedule parsing.
+•	Added limit of 1 hour for each script run.
+•	Added possibility to end the script dynamically by creating the "MAINT" file (previously it was check upon start only).
+
+26.7.2016 version 3.0 build #6.2
+•	Added Cell Server file system clean-up (MARS related files).
+
+26.7.2016 version 3.0 build #6.1
+•	Fixed re-queuing of finished actions.
+
+22.7.2016 version 3.0 build #6.0
+•	Added WORKERS (default 4) instead of single CACHE_COMMAND.
+•	Adapted STARTOFSESSION and ENDOFSESSION actions to use WORKERS.
+•	removed SKIP_EXCLUDED setting, now all sessions will be read.
+
+11.7.2016 version 3.0 build #5.3
+•	Added POWERSHELL command to MARS.CMD for hung OMNISTAT process termination (older than 15 minutes).
+•	Extended database size for GBWRITTEN and PERFORMANCE values to DECIMAL(10,2).
+
+7.7.2017 version 3.0 build #5.2
+•	Modified specification file parsing, now all integrations are processed by default.
+•	Removed INTEGRATIONS value from config.ini.
+•	Modified OMNISTAT routine priority, so it will be processed only after backlog is cleared.
+
+30.6.2016 version 3.0 build #5.1
+•	Modified queue processing, now ROUTINEs will have precedence. Fixes specification processing on Cell Servers with permanent backlog.
+•	Modified specification schedule parsing, allowed "-exclude -day (Sun|Mon|Tue|Wed|Thu|Fri|Sat)+" used in Monthly schedules.
+
+16.6.2016 version 3.0 build #5.0
+•	Fixed  - Specification group not updated
+
+7.6.2016 version 3.0 build #4.9
+•	Hotfix for 3.0.4.8 for PHP versions below 5.3, as it contained some code for PHP 5.3.
+
+6.6.2016 version 3.0 build #4.8
+•	Fixed issue with yearly schedules containing '-(2|4|12)months' reported as having monthly periodicity.
+
+2.6.2016 version 3.0 build #4.7
+•	Hotfix for 3.0.4.6 release.
+
+1.6.2016 version 3.0 build #4.6
+•	Hotfix for 3.0.4.5 release.
+
+30.5.2016 version 3.0 build #4.5
+•	Reports can be now easily scheduled from "Send" page.
+•	Schedule name length can now be 64 characters.
+•	New "schedule" is scheduled at "never" by default, instead of blank (each 15 minutes).
+
+17.5.2016 version 3.0 build #4.4
+•	Fixed: Cookie error in Administration interface caused by #4.3
+
+16.5.2016 version 3.0 build #4.3
+•	Fixed: Syntax error in inc/application.php caused by #4.2
+
+16.5.2016 version 3.0 build #4.2
+•	Removed: PHPMyAdmin.
+•	Fixed: Authentication cookie was not set in certain occasions.
+•	Fixed: Scheduled reports were not sent, when Windows Scheduled Task was triggered milliseconds before expected time.
+
+5.5.2016 version 3.0 build #4.1
+•	Added: Cell Server report shows time zone and local time for each Cell Server.
+•	Added: "Specification - Copy list" report.
+•	Added: Upgrade package upload in Administration interface
+•	Added: Web server Time zone in HTML report footer.
+•	Fixed: Typo error in Copy list audit report
+
+3.5.2016 version 3.0 build #4.0
+•	Added: Cell Server status report shows "All services" instead of their list, if all services have same status (up/down).
+•	Added: "Specification groups" report
+•	Added: Datalist/Device count to "Copy lists" report
+•	Added: Separate "Copy lists with details" report
+•	Modified: Copy list and Auditing report contents for specifications/copy files 
+•	Fixed: no ITO if read more than 1 hour after backup FINISH, not after start
+
+2.5.2016 version 3.0 build #3.9
+•	Added "Group" field to specifications report.
+•	Added automatic upgrade installation, once the zip is uploaded to correct place.
+•	Fixed issue with time period "This week"; on Sundays date "from" shows next Monday instead of previous (PHP "strtotime" bug for "Monday this week").
+
+28.4.2016 version 3.0 build #3.8
+•	Fixed issue with specifications audit, where no host and no schedule was defined.
+•	Added "Started" field on queue report(s).
+
+26.4.2016 version 3.0 build #3.7
+•	Added debug output of executed DP commands (first set DEBUG=1 in config.ini, then see debug.log)
+•	Fixed issue: report "Copy lists not assigned" shows zero records.
+
+22.4.2016 version 3.0 build #3.6
+•	Added "Copy list" integration
+•	Added another 4 "Auditing" reports
+
+15.4.2016 version 3.0 build #3.5
+•	Extended allowed config.ini entry size to 128 characters
+•	Added HANA integration to default list of integrations
+•	Changed TIME_ZONE from mandatory to optional in both Cell Server and Web scripts, keeping present config.ini values enabled
+•	Added 8 "Auditing" reports
+
+8.3.2016 version 3.0 build #3.4
+•	Added possibility to read OMNISTAT details only for defined types (OMNISTAT_DETAILS = Backup(,Copy,Media,Restore,Preview)
+•	Fixed issue with DataProtector "omnidbutil -show_locked_devs" command
+•	Extended allowed specification size above 32k characters
+
+2.3.2016 version 3.0 build #3.3
+•	Fixed issue with Notifications containing non-alphabetic characters (PHP parse_ini_file( ) )
+•	Fixed issue with six-digit PID's
+•	Extended library/device/pool name length to 64 characters
+•	Reworked script execution locking mechanism from scratch (flock() instead of process count)
+
+18.2.2016 version 3.0 build #3.2
+•	Fixed MySQLi connect method for PHP <5.3 (due to a bug in PHP http://php.net/manual/en/mysqli.connect-error.php).
+•	Fixed colours for Cell Servers importing data.
+
+22.1.2016 version 3.0 build #3.1
+•	Fixed a rare issue with 'difficult' schedule.
+•	Added possibility to 'add' report in web interface (via the '+' sign), instead of just replace.
+•	Changed colours for Cell Servers importing data.
+
+16.1.2016 version 3.0 build #3.0
+•	3.0.3.0 release.
+
+14.01.2016 version 3.0 build #2.7
+•	Fixed a rare issue with specifications which existed for a short while only (between 1 and 2 hours) - they didn't disappear from reports.
+
+12.01.2016 version 3.0 build #2.6
+•	Added 'Clients missing Objects' report.
+
+17.12.2015 version 3.0 build #2.5
+•	Added 'Backup Volume per Cell Server' report.
+•	Added 'Backup Volume per Library' report.
+•	Added two new columns 'FS objects' and 'Integ objects' into 'Cell Servers' report.
+•	Added indication of running instances of MARS to particular Cell Server name. If there is an instance already running, it will show as 'hostname::1'
+
+27.11.2015 version 3.0 build #2.4
+•	Fixed parsing of scheduled reports containing URLDECODEd characters in PAGE field.
+•	Added SQL routine exception handler. SQL routines should not fail anymore.
+•	Extended all default OMNI CMD timeouts, and added a timeout multiplier config setting (default TIMEOUT_MULTIPLIER = 1).
+•	Added config setting which allows to skip reading further details for 'Excluded' sessions (default SKIP_EXCLUDED = 0 ).
+
+23.11.2015 version 3.0 build #2.3
+•	Fixed customer filtering related issue in customer-specific reporting
+
+19.11.2015 version 3.0 build #2.2
+•	Created simple Web/DB Server and Cell Server installation scripts
+•	Switched database class from MySQL to MySQLi
+•	Moved SMTP settings from PHP.INI to COFIG.INI. Setting in PHP.INI are set to "mail:25". 
+	You can add "mail" to hosts file with correct IP, or add following entries to CONFIG.INI, to [Mailing] section:
+		SMTP_SERVER	="<your_smtp_server>"
+		SMTP_PORT	=<your smtp port> ### ATTENTION: this entry is required only if it differs from default 25 ###
+•	Fixed issue with wrong timestamp/datetime parsing in reports
+•	Fixed missing sessions with empty customer in BSR reports
+•	Extended customer name to 32 characters
+•	Modified Windows Scheduled task details
+
+3.11.2015 version 3.0 build #2.1
+•	Created simple Cell Server installation script
+•	Switched from MySQL to MySQLi
+•	Moved SMTP settings from PHP.INI to COFIG.INI. Setting in PHP.INI are set to "mail:25". 
+	You can add "mail" to hosts file with correct IP, or add following entries to CONFIG.INI, to [Mailing] section:
+		SMTP_SERVER	="<your_smtp_server>"
+		SMTP_PORT	=<your smtp port> ### ATTENTION: this entry is required only if it differs from default 25 ###
+•	Fixed issue with wrong timestamp/datetime parsing in reports
+
+21.9.2015 version 3.0 build #2.0
+•	Redesigned the web interface and reports to HPE standards

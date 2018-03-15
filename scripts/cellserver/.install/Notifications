@@ -1,0 +1,206 @@
+### REMOVE THESE 3 LINES BEFORE SAVE
+### UX : REPLACE %PATH% WITH /opt/omni/lbin/Scripts/mars/mars.sh AND SAVE AS /etc/opt/omni/server/Notifications
+### WIN: REPLACE %PATH% WITH F:\dpshare\MARS\mars.cmd AND SAVE AS F:\dpshare\Config\Server\Notifications
+
+NOTIFICATION "MARS_ALARM"
+{
+	-event "Alarm"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+}
+
+
+NOTIFICATION "MARS_CSASTARTSESSIONFAILED"
+{
+	-event "CsaStartSessionFailed"
+	-external "%PATH% -n"
+	-parameter LEVEL "Major"
+}
+
+
+NOTIFICATION "MARS_DEVICEERROR"
+{
+	-event "DeviceError"
+	-external "%PATH% -n"
+	-parameter LEVEL "Critical"
+	-parameter DEVICE "*"
+}
+
+
+NOTIFICATION "MARS_ENDOFSESSION"
+{
+	-event "EndOfSession"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter DATALIST "*"
+	-parameter SESSSTAT "*"
+	-parameter SESSIONTYPE "Backup"
+}
+
+
+NOTIFICATION "MARS_FILELIBRARYDISKUSAGE"
+{
+	-event "FileLibraryDiskUsage"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter FILELIBRARYNAME "*"
+}
+
+
+NOTIFICATION "MARS_HEALTHCHECKFAILED"
+{
+	-event "HealthCheckFailed"
+	-external "%PATH% -n"
+	-parameter LEVEL "Critical"
+}
+
+
+NOTIFICATION "MARS_IDBBACKUPNEEDED"
+{
+	-event "DbBackupNeeded"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter DBBCKPPERIOD "2"
+	-parameter NUMINCDBBACKUPS "1"
+}
+
+
+NOTIFICATION "MARS_IDBCORRUPTED"
+{
+	-event "DbCorrupted"
+	-external "%PATH% -n"
+	-parameter LEVEL "Critical"
+}
+
+
+NOTIFICATION "MARS_IDBLIMITS"
+{
+	-event "DbLimits"
+	-external "%PATH% -n"
+	-parameter LEVEL "Major"
+	-parameter MMDBITEMSUSED "95"
+	-parameter CDBITEMSUSED "95"
+}
+
+
+NOTIFICATION "MARS_REORGANIZATIONNEEDED"
+{
+	-event "DbReorgNeeded"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter BLOAT "25"
+	-parameter TABLEFRAGMENTATION "25"
+	-parameter INDEXFRAGMENTATION "25"
+	-parameter TABLESIZE "1024"
+}
+
+
+NOTIFICATION "MARS_IDBSPACELOW"
+{
+	-event "DbSpaceLow"
+	-external "%PATH% -n"
+	-parameter LEVEL "Major"
+	-parameter DISKSIZELIMIT "100"
+	-parameter DCBFSLIMIT "100"
+	-parameter WALSIZELIMIT "100"
+}
+
+
+NOTIFICATION "MARS_LICENSEWARNING"
+{
+	-event "LicenseWarning"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+}
+
+
+NOTIFICATION "MARS_LICENSEWILLEXPIRE"
+{
+	-event "LicenseWillExpire"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter LICEXPIREDAYS "30"
+}
+
+
+NOTIFICATION "MARS_MAILSLOTSFULL"
+{
+	-event "MailSlotsFull"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter DEVICE "*"
+}
+
+
+NOTIFICATION "MARS_MOUNTREQUEST"
+{
+	-event "MountRequest"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter DEVICE "*"
+}
+
+
+NOTIFICATION "MARS_NOTENOUGHFREEMEDIA"
+{
+	-event "NotEnoughFreeMedia"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter POOL "*"
+	-parameter NUMFREEMEDIA "5"
+}
+
+
+NOTIFICATION "MARS_SESSIONERROR"
+{
+	-event "SessionError"
+	-external "%PATH% -n"
+	-parameter LEVEL "Major"
+	-parameter SINGLEMSGLEVEL "*"
+	-parameter SESSIONTYPE "Backup"
+}
+
+
+NOTIFICATION "MARS_STARTOFSESSION"
+{
+	-event "StartOfSession"
+	-external "%PATH% -n"
+	-parameter LEVEL "Normal"
+	-parameter DATALIST "*"
+	-parameter SESSIONTYPE "Backup"
+}
+
+
+NOTIFICATION "MARS_TOOMANYSESSIONS"
+{
+	-event "TooManySessions"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+}
+
+
+NOTIFICATION "MARS_UNEXPECTEDEVENTS"
+{
+	-event "UnexpectedEvents"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+	-parameter NUMEVENT "*"
+}
+
+
+NOTIFICATION "MARS_UNIXMEDIAAGENTWARNING"
+{
+	-event "CheckUxMediaAgents"
+	-external "%PATH% -n"
+	-parameter LEVEL "Warning"
+}
+
+
+NOTIFICATION "MARS_USERCHECKFAILED"
+{
+	-event "UserCheckFailed"
+	-external "%PATH% -n"
+	-parameter LEVEL "Major"
+	-parameter COMMANDPATH ""
+}
+

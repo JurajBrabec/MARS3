@@ -1,0 +1,18 @@
+# Binary files
+/apache
+/bin
+/mysql
+/php
+
+# Document files
+/docs
+
+# Log & Temp folders
+**/logs
+**/tmp
+
+# Install directory
+!**/.install
+
+# Upgrade folders
+/upgrade#*

@@ -1,0 +1,71 @@
+[PHP and DataProtector paths]
+;PHP_HOME path on RHEL /usr/bin, on HPUX /opt/hpws22/apache/php/bin/ or /opt/php54/php/bin, on Windows (relative) php
+PHP_HOME                =/usr/bin
+OMNI_HOME               =/opt/omni
+OMNI_SERVER             =/etc/opt/omni/server
+;PHP_HOME                =php
+;OMNI_HOME               =C:\Program Files\OmniBack
+;OMNI_SERVER             =C:\Program Data\OmniBack\Config\Server
+
+[MySQL connection details]
+MYSQL_HOST              =%MYSQL_HOST%:3306
+MYSQL_USER              =script
+MYSQL_PASSWORD          =omniback
+MYSQL_DB                =mars30
+
+[3rd Party paths]
+;BACKUPMON               =/var/opt/OV/bin/instrumentation/
+;OMNI2ESL                =/opt/hps/upload/obcheck2esl/
+;ITO_FILE                =/var/opt/OV/backupmon/log/omniback_prio_check.ito
+BACKUPMON               =
+OMNI2ESL                =tmp
+ITO_FILE                =tmp\omniback_prio_check.ito
+
+[Common Parameters]
+TIME_ZONE               =%TIME_ZONE%
+ITO_IGNORE              =_final,_test,test_,_tlogs
+ITO_PRIORITY            =high
+RECYCLE_FAILURES        =yes
+DECIMAL                 ="."
+TIME_FORMAT             =Y-m-d H:i:s
+DEBUG                   =0
+;SILENT_WINDOW           =19:00 4:00
+SERVICE_PRIORITY        =critical
+;OMNITRIG on UX, OMNIINET on WIN
+SERVICE_LIST            =CRS,MMD,KMS,HPDP-IDB,HPDP-IDB-CP,HPDP-AS,OMNITRIG
+;SERVICE_LIST            =CRS,MMD,KMS,HPDP-IDB,HPDP-IDB-CP,HPDP-AS,OMNIINET
+LICENSEWARNING_PRIORITY =low
+;SESSIONERROR_PRIORITY   =high
+FREEMEDIA_PRIORITY      =low
+FREEMEDIA_IGNORE_POOL   ="default|protected|permanent|temp|test"
+TABLESPACELOW_PRIORITY  =critical
+MOUNTREQUEST_PRIORITY   =high
+DEVICEERROR_PRIORITY    =critical
+ALARM_PRIORITY          =low
+CSASSFAILED_PRIORITY    =low
+MAILSLOTSFULL_PRIORITY  =low
+LICENSEWILLEXPIRE_PRIORITY=low
+HEALTHCHECKFAILED_PRIORITY=high
+DBCORRUPTED_PRIORITY    =critical
+DBPURGENEEDED_PRIORITY  =high
+DBBACKUPNEEDED_PRIORITY =critical
+UNEXPECTEDEVENTS_PRIORITY=low
+USERCHECKFAILED_PRIORITY=low
+
+[Routine Cycles]
+ROUTINE_LIBRARIES       =15:00
+ROUTINE_DEVICES         =15:00
+ROUTINE_MEDIA           =15:00
+ROUTINE_SPECIFICATIONS  =+60
+ROUTINE_OMNI2ESL        =+480
+ROUTINE_CHECK_BACKUPS   =+60
+ROUTINE_LOCKED_OBJECTS  =+5
+ROUTINE_OMNISTAT        =+5
+
+[Optional Parameters]
+;CELLSERVER              =%CELLSERVER%
+;WORKERS                 =4
+;MAINTENANCE_FILE        =MAINT
+;TIMEOUT_MULTIPLIER      =1
+;OMNISTAT_DETAILS        =Backup
+;STARTOFSESSION_SKIP     =1

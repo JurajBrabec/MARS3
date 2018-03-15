@@ -1,0 +1,237 @@
+/*
+Primary
+HPE Black	#333333
+	Text	#666666
+	Second	#999999
+HPE Green	#01A982
+HPE White	#FFFFFF
+Neutrals
+Dark Steel	#617D78
+Slate		#60798D
+Purple		#614767
+Bronze		#877B75
+Grey		#CCCCCC
+Vibrants
+Turquoise	#2AD2C9
+Orange		#FF8D6D
+Status
+Red			#FF454F
+Yellow		#FFD042
+
+
+
+*/
+
+/* BODY */
+body {
+	background-color: #ffffff; 
+	color: #666666;
+	font: 12px Metric,HPFutura Book,Verdana,Tahoma,sans-serif;
+	margin: 0px; 
+	min-width: 800px; 
+	padding: 0px; 
+	text-align: left; 
+}
+
+/* INPUT, SELECT */
+input,select {
+	background-color:white;
+	border:1px solid #cccccc;
+	color: #60798D;
+	display:inline-block;
+	font-weight:bold;
+	text-align: left; 
+}
+input  {
+	padding:3px 3px;
+}
+select  {
+	padding:2px 3px;
+}
+input:focus,select:focus {
+	color:#333333;
+}
+
+/* FORM */
+form legend {
+	color: #333333;
+	font-weight:bold;
+}
+form fieldset {
+	border: 1px solid #cccccc;
+}
+
+/* BUTTON */
+button {
+	border: 1px solid #cccccc;
+	color: #01A982;
+	font-weight:bold;
+	padding:2px 16px;
+}
+button:hover {
+	color: #ff8d6d;
+}
+button:active {
+	color: #333333;
+}
+
+/* TABLE */
+table {
+	border-collapse: collapse;
+	font-size: 100%;
+}
+/* TABLE HEAD */
+th {
+	background-color: #60798d;
+	color: #ffffff;
+	border: 1px solid #60798d;
+	border-bottom: 4px solid #ff8d6d;
+	padding: 6px; 
+	font-weight: bold; 
+	white-space: nowrap;
+}
+th a:link, th a:visited {
+	color: #ffffff; 
+}
+th a:hover, th a:active {
+	color: #cccccc; 
+}
+th.filter {
+	border-bottom: 4px solid #2AD2C9;
+}
+th.sort{
+	border-bottom: 4px solid #FFD042;
+}
+th.sort,th.sort a:link,th.sort a:visited {
+	color: #FFD042; 
+}
+th.filter,th.filter a:link,th.filter a:visited {
+	color: #2AD2C9; 
+}
+th.sort a:hover,th.sort a:active,th.filter a:hover,th.filter a:active {
+	color: #ffffff; 
+}
+/* TABLE DATA */
+td {
+	border: 1px solid #cccccc;
+	padding: 5px;
+	white-space: nowrap;
+}
+
+/* ANCHOR */
+a {
+	cursor: pointer; 
+	font-weight:bold;
+	padding: 4px;
+}
+a:link, a:visited {
+	color: #01A982; 
+}
+a:hover, a:active {
+	color: #ff8d6d;
+}
+
+/* HEADER */
+#header {
+	margin-bottom: 32px;
+}
+#header table,td.title {
+	text-align: center;
+	width: 100%;
+}
+#header td {
+	background-color: #60798d;
+	padding: 16px 8px;
+	color: #ffffff;
+	font-size: 18px;
+	font-weight: bold;
+}
+#header table,#header td {
+	border: none;
+	border-bottom: 4px solid #ff8d6d;
+}
+
+/* LOADING */
+#loading {
+    background-color: #FFD9CA;
+	border: 1px solid #FF8D6D;
+	cursor: pointer; 
+    top: 110px;
+    left: 40%;
+    right: 40%;
+	font-weight: bold;
+    line-height: 24px;
+    overflow: hidden; 
+	padding: 1px 24px;
+    position: absolute;
+	text-align: center; 
+    -webkit-box-shadow: 0 0 5px #FF8D6D;
+    -moz-box-shadow:    0 0 5px #FF8D6D;
+    box-shadow:         0 0 5px #FF8D6D;
+    z-index: 101;
+}
+#loading img {
+	vertical-align: middle; 
+}
+
+/* MESSAGE */
+#message {
+    background-color: lightyellow;
+	border: 1px solid #ffd042;
+	cursor: pointer; 
+    top: 110px;
+    left: 0px;
+	font-weight: bold;
+    line-height: 24px;
+    overflow: hidden; 
+	padding: 1px 24px;
+    position: absolute;
+	text-align: left; 
+    -webkit-box-shadow: 0 0 5px #ffd042;
+    -moz-box-shadow:    0 0 5px #ffd042;
+    box-shadow:         0 0 5px #ffd042;
+    z-index: 101;
+}
+
+/* FOOTER */
+#footer {
+	border-top: 1px solid #cccccc;
+	color: #333333;
+	font-size: 85%;
+	margin-top: 24px; 
+	padding: 16px;
+}
+
+/* REPORT */
+.report a {
+	color: inherit ; 
+	color: expression(this.parentNode.currentStyle['color']); 
+	cursor: pointer; 
+	padding-bottom: 3px; 
+	padding-left: 4px; 
+	padding-right: 4px; 
+	padding-top: 1px
+}
+
+/* SHADOW */
+div.shadow {
+	display:table;
+	margin: 16px 2px;
+	box-shadow:         5px 5px 5px #cccccc;
+	-moz-box-shadow:    5px 5px 5px #cccccc;
+	-webkit-box-shadow: 5px 5px 5px #cccccc;
+}
+
+/* DEBUG */
+div.debug {
+	background-color: #ffd042;
+	border: 1px solid #ff8d6d;
+	color: #333333;
+	font-size: 85%;
+	margin: 8px;
+	padding: 0px;
+    white-space: pre-wrap;	
+}
+
+/* BOLD */
+.bold { font-weight:bold; }

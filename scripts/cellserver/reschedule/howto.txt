@@ -1,0 +1,12 @@
+cd /omni_shared/opt_omni_lbin_Scripts/reschedule
+rm -rf backup
+rm -f reschedule.log
+rm -f reschedule.ini
+rm -f reschedule.php
+nano reschedule.ini
+
+nano reschedule.php
+
+./reschedule.sh>reschedule.log
+cat reschedule.log | grep ERR
+cat reschedule.log | grep WARN
