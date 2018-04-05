@@ -1,6 +1,9 @@
 MARS 3.0 Release notes 
 ======================
 
+28.3.2018 version 3.0 build #9.3
+•	Fixed "Init" script/SQL issues.
+
 21.2.2018 version 3.0 build #9.2
 •	Added "config_timers" table to measure duration of various tasks.
 •	Revamped "Processes" and "Status" reports, based on "config_timers".
