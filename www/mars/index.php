@@ -216,6 +216,7 @@ class application {
 							break;
 					}
 					$page->parse_url( );
+					$page->params[ REQUERY ] = 1;
 					!empty( $row[ 'param2' ] ) && $row[ 'param2' ] != TIMEPERIOD_DEFAULT && $page->params[ TIMEPERIOD ] = explode( '::', $row[ 'param2' ] );
 					!empty( $row[ 'param3' ] ) && $row[ 'param3' ] != CUSTOMER_DEFAULT && $page->params[ CUSTOMER ] = $row[ 'param3' ];
 					!empty( $row[ 'param4' ] ) && $page->params[ MAIL_TO ] = $row[ 'param4' ];

@@ -127,7 +127,7 @@ class page {
 		!empty( $page[ REPORTS ] ) && $reports = $page[ REPORTS ];
 		foreach ( $reports as $report ) {
 			$params = $report;
-			!empty( $page[ REQUERY ] ) && $params[ REQUERY ] == 1;
+			!empty( $page[ REQUERY ] ) && $params[ REQUERY ] = 1;
 			if ( empty( $params[ LINK ] ) ) {
 				$this->add_report( $params );
 			} else {
@@ -664,6 +664,7 @@ class page {
 				}
 			}
 			foreach ( $this->reports as $report ) {
+				!empty( $this->params[ REQUERY ] ) && $report->params[ REQUERY ] = $this->params[ REQUERY ];
 				$report->prepare( );
 				$html[ ] = $report->output( );
 			}
