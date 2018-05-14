@@ -1066,6 +1066,22 @@ BEGIN
 
 	INSERT INTO mars_log (cellserver,pid,duration,severity,message) VALUES ('localhost',@pid,0,'DEBUG','#02 MAINTENANCE DATAPROTECTOR');
 
+	CREATE TABLE temp_table LIKE dataprotector_omnistat;
+	INSERT INTO temp_table SELECT * FROM dataprotector_omnistat WHERE updated_on>NOW()-INTERVAL 1 DAY IS NULL ORDER BY cellserver,sessionid;
+	RENAME TABLE dataprotector_omnistat TO drop_table,temp_table TO dataprotector_omnistat;
+	DROP TABLE drop_table;
+	CREATE TABLE temp_table LIKE dataprotector_omnistat_devices;
+	INSERT INTO temp_table SELECT s.* FROM dataprotector_omnistat_devices s WHERE 
+		EXISTS (SELECT * FROM dataprotector_omnistat o WHERE o.cellserver=s.cellserver AND o.sessionid=s.sessionid) 
+		ORDER BY s.cellserver,s.sessionid;
+	RENAME TABLE dataprotector_omnistat_devices TO drop_table,temp_table TO dataprotector_omnistat_devices;
+	DROP TABLE drop_table;
+	CREATE TABLE temp_table LIKE dataprotector_omnistat_objects;
+	INSERT INTO temp_table SELECT s.* FROM dataprotector_omnistat_objects s WHERE 
+		EXISTS (SELECT * FROM dataprotector_omnistat o WHERE o.cellserver=s.cellserver AND o.sessionid=s.sessionid) 
+		ORDER BY s.cellserver,s.sessionid;
+	RENAME TABLE dataprotector_omnistat_objects TO drop_table,temp_table TO dataprotector_omnistat_objects;
+	DROP TABLE drop_table;
 	CREATE TABLE temp_table LIKE dataprotector_clients;
 	INSERT INTO temp_table SELECT * FROM dataprotector_clients WHERE valid_until IS NULL ORDER BY cellserver,name;
 	RENAME TABLE dataprotector_clients TO drop_table,temp_table TO dataprotector_clients;
